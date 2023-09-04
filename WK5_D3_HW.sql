@@ -80,14 +80,13 @@ ORDER BY rating;
 
 SELECT customer_id, first_name, last_name
 FROM customer
-WHERE
-    customer_id IN (
-        SELECT customer_id
-        FROM payment
-        WHERE amount > 6.99
-        GROUP BY customer_id
-        HAVING COUNT(payment_id) = 1
-    );
+WHERE customer_id IN (
+    SELECT customer_id
+    FROM payment
+    WHERE amount > 6.99
+    GROUP BY customer_id
+    HAVING COUNT(payment_id) = 1
+);
 
 
 -- 8. How many free rentals did our stores give away?
